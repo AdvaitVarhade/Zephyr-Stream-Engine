@@ -1,0 +1,2 @@
+cargo::rerun-if-changed=schemas/event.fbs
+cargo::warning=FlatBuffers schema compiled successfully

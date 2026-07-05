@@ -1,0 +1,17 @@
+[package]
+name = "node-ffi"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = { version = "2.16", default-features = false, features = ["napi4"] }
+napi-derive = "2.16"
+core-ringbuffer = { path = "../../Phase 1/core-ringbuffer" }
+stream-analytics = { path = "../../Phase 5/stream-analytics" }
+flatbuffers = "25.2.10"
+
+[build-dependencies]
+napi-build = "2.1"

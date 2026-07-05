@@ -1,0 +1,5 @@
+target/
+trading-dashboard/
+.git/
+.dockerignore
+Dockerfile
