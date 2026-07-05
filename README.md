@@ -6,7 +6,7 @@ A massive, high-performance, ultra-low-latency distributed data pipeline designe
 
 Built in **Rust**, this engine evaluates streaming market data (or SIEM security events) directly from standard TCP network interfaces without a single heap allocation on the hot path, bypassing traditional garbage-collected latency jitter.
 
-## 🚀 The Architecture: 5 Core Phases
+##  The Architecture: 5 Core Phases
 
 The engine was systematically built across 5 isolated technical phases, culminating in a single distributed pipeline:
 
@@ -35,25 +35,25 @@ The engine was systematically built across 5 isolated technical phases, culminat
 
 ---
 
-## 📊 Performance Benchmarks (Zephyr vs. Legacy)
+##  Performance Benchmarks (Zephyr vs. Legacy)
 
 To prove the efficacy of the system, we ran an unassumed, apples-to-apples load benchmark against standard enterprise tech (a pure Node.js TCP `net` stream parser running `JSON.parse()` and array shifting).
 
 Both systems were blasted with **1,000,000 simulated TCP events** natively in Linux Docker containers:
 
-### 🔴 Legacy System (Node.js + JSON)
+###  Legacy System (Node.js + JSON)
 *Standard V8 garbage-collected event loop processing.*
 - **Throughput**: ~1,010,000 msgs/sec *(inflated via async chunk buffering)*
 - **End-to-End Median (p50)**: **85,862 µs** (85.86 ms)
 
-### 🟢 Zephyr Stream Engine (Rust + `io_uring` + FlatBuffers)
+###  Zephyr Stream Engine (Rust + `io_uring` + FlatBuffers)
 *Zero-allocation, kernel-bypass TCP ingestion to cross-thread evaluation.*
 - **Throughput**: ~256,000 msgs/sec
 - **End-to-End Median (p50)**: **14.5 µs** (0.0145 ms)
 
 **Conclusion:** The Zephyr architecture operates exactly **5,921x faster end-to-end** than the standard Legacy architecture, delivering predictable, sub-microsecond internal evaluation latencies (700ns p99 pure processing time) entirely free from Garbage Collection interference.
 
-## 🛠️ How to Run the Native Benchmark
+##  How to Run the Native Benchmark
 
 The project includes a `Dockerfile` to build and test the `io_uring` benchmarks locally, even on Windows or macOS (via Docker Desktop Linux kernels).
 
